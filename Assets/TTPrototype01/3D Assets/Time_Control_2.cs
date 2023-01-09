@@ -138,8 +138,9 @@ public class Time_Control_2 : MonoBehaviour
                 if (debugging)
                 {
                     if (debugging)
-                    { 
+                    {
                         Debug.Log("RecordIndex: " + recordIndex);
+                    }
                 }
 
                 //IF: We are not trying to go below limit.
