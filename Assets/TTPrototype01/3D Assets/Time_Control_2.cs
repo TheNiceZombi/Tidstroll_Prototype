@@ -6,6 +6,12 @@ using UnityEngine.InputSystem;
 public class Time_Control_2 : MonoBehaviour
 {
 
+    /*
+        This script records every object with a "TimeControlled" component attached to it.
+        It then uses those recordings to wined time backwards or forwards.
+    */
+
+
     bool debugging = true;
 
     public static float gravity = -10;
@@ -139,24 +145,36 @@ public class Time_Control_2 : MonoBehaviour
                 {
                     if (debugging)
                     {
-                        Debug.Log("RecordIndex: " + recordIndex);
+                        Debug.Log("Record Index: " + recordIndex);
+                        Debug.Log("Record Count:"  + recordCount);
                     }
                 }
 
-                //IF: We are not trying to go below limit.
-                if (recordIndex >= 0 && recordIndex <= recordCount)
+                if (rewindSpeedAmount != 0)
                 {
-                    recordIndex += rewindSpeedAmount;
-                    if (debugging)
+                    //IF: We are not trying to go below limit.
+                    //*
+                    //if (recordIndex > 0 && recordIndex <= recordCount)
                     {
-                        Debug.Log("RewindSpeed: " + rewindSpeedAmount);
-                        Debug.Log("RecordIndex: " + recordIndex);
-                    }
+                        recordIndex -= rewindSpeedAmount;
+                        recordIndex = Mathf.Clamp(recordIndex, 1, recordCount-1);
+                        if (debugging)
+                        {
+                            Debug.Log("RewindSpeed: " + rewindSpeedAmount);
+                            Debug.Log("RecordIndex: " + recordIndex);
+                        }
 
+                    }
+                    // */
+}
+                else
+{
+                    if (debugging) Debug.Log("STOP Winding");
                 }
+
 
                 ///--------------------------
-               
+
                 /// Replay recorded movement
                 for (int objectIndex = 0; objectIndex < timeObjects.Length; objectIndex++)
                 {
@@ -213,19 +231,25 @@ public class Time_Control_2 : MonoBehaviour
         if (context.canceled)
         {
             timeState = timeWinding.none;
-            rewindSpeedAmount = 0;
+            //rewindSpeedAmount = 0;
             if (debugging) Debug.Log("REWIND: Cancled");
         }
     }
-
+    
     public void rewindSpeed(InputAction.CallbackContext context)
     {
-
+        
+        if (debugging) Debug.Log("REWIND SPEED: ACTIVATE");
 
         int speed = (int)Mathf.Round( context.ReadValue<Vector2>().x);
 
+        if (debugging) Debug.Log("Wined speed Change:" + speed);
+
         rewindSpeedAmount += speed;
 
+        if (debugging) Debug.Log("Speed is now:" + rewindSpeedAmount);
+        
 
     }
+
 }
