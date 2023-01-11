@@ -86,20 +86,22 @@ public class TimeControlled_2 : MonoBehaviour
         }
         else
         {
+            /// RESET: So that the newest entry is the current entry
+            if (was_TimeManipulated)
+            {
+                recordCount = recordIndex;
+                rewindSpeedAmount = 0;
+                was_TimeManipulated = false;
+
+                RemoveRecording(recordCount);
+
+            }
+
             if (previousPosition != transform.position)
             {
                 TimeRecord();
             }
-            /// RESET: So that the newest entry is the current entry
-            if (was_TimeManipulated)
-            {
-                recordCount = recordList.Count-1;
-                rewindSpeedAmount = 0;
-                was_TimeManipulated = false;
-
-                
-
-            }
+            
 
 
             previousPosition = transform.position;
@@ -108,24 +110,33 @@ public class TimeControlled_2 : MonoBehaviour
     }
     ///
 
+
+
+
+
+
+
+
+
     /// Travel in Time
     public void TimeUpdate()
     {
+       
         /// IF: Rewind speed isn't zero
         if (rewindSpeedAmount != 0)
         {
-            // Step through recording
-            recordIndex -= rewindSpeedAmount;
+        // Step through recording
+        recordIndex -= rewindSpeedAmount;
 
-            Debug.Log("RecordIndex: " + recordIndex +" RecordCount: " + recordList.Count);
+        Debug.Log("RecordIndex: " + recordIndex + " recordList.Count: " + recordList.Count);
 
-            // CLAMP: RecordIndex so it does not go out of bounds  
-            recordIndex = Mathf.Clamp(recordIndex, 1, recordList.Count - 2);
-            if (debugging)
-            {
-                Debug.Log("RewindSpeed: " + rewindSpeedAmount);
-                Debug.Log("RecordIndex: " + recordIndex);
-            }
+        // CLAMP: RecordIndex so it does not go out of bounds  
+        recordIndex = Mathf.Clamp(recordIndex, 1, recordList.Count - 2);
+        if (debugging)
+        {
+           // Debug.Log("RewindSpeed: " + rewindSpeedAmount);
+           // Debug.Log("RecordIndex: " + recordIndex);
+        }
         }
 
 
@@ -144,10 +155,7 @@ public class TimeControlled_2 : MonoBehaviour
 
         }
 
-        // REMOVE: recordings
-        //recordList.RemoveAt(recordIndex);//recordList.Count - 1);
-
-        Debug.Log("DataList size: " + recordList.Count);
+        Debug.Log("-- NOW: " + recordList.Count);
 
         /// IF: TimeMaster has stopped time travel
         if (timeMaster != null)
@@ -196,9 +204,28 @@ public class TimeControlled_2 : MonoBehaviour
         recordCount++;
         recordIndex = recordCount;
 
-        if (debugging) Debug.Log("recordCount: "+ recordList.Count);
+        if (debugging) Debug.Log("recordList.Count: "+ recordList.Count);
 
 
+    }
+    ///
+
+    /// / REMOVE: recordings
+    void RemoveRecording(int downTo)
+    {
+        if (debugging)
+        {
+            Debug.Log("REMOVING:: recordList.Count   : " + recordList.Count +" Remove Down to: " + downTo);
+            Debug.Log("- - - -");
+        }
+
+        int _i;
+        for(_i = recordList.Count; _i > downTo; _i--)
+        {
+            recordList.RemoveAt( _i - 1);  //recordList.Count - 1);
+        }
+
+        if (debugging) Debug.Log("recordCount is Now: " + recordList.Count);
     }
     ///
 

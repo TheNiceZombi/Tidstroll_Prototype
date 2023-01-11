@@ -2542,13 +2542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e317f8ed9479aa549b3a24a8eed95a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUpdating: 0
-  velocity: {x: 0, y: 0, z: 0}
-  _isKinematic: 0
-  rb: {fileID: 0}
-  moveSpeed: 2
-  jumpVelocity: 20
-  wantToJump: 0
 --- !u!65 &1393273460
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4198,7 +4191,6 @@ GameObject:
   - component: {fileID: 1780062138}
   - component: {fileID: 1780062137}
   - component: {fileID: 1780062143}
-  - component: {fileID: 1780062144}
   m_Layer: 14
   m_Name: Cube (2)
   m_TagString: interact
@@ -4326,20 +4318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea1bd3614edc96448eafc8bf0b7d91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1780062144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780062135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d06049f9efb00f43879d0660aeb3c03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  is_timeManipulated: 0
-  rewindSpeedAmount: 0
 --- !u!1 &1899747115
 GameObject:
   m_ObjectHideFlags: 0
