@@ -25,6 +25,8 @@ public class Player_Stats : MonoBehaviour
     Vector3 collisionOffset;
     Rigidbody rb;
 
+    public GameObject timeMaster;
+
     public static float gravity = 100f;
 
     private void Start()
@@ -32,6 +34,12 @@ public class Player_Stats : MonoBehaviour
         //KickStarter.stateHandler.SetMovementSystem(false);
         gravity = gravityAmount;
         rb = gameObject.GetComponent<Rigidbody>();
+
+        timeMaster = GameObject.Find("Time_Master");
+        if(timeMaster == null)
+        {
+            Debug.LogError("Player_Stats:: Time_Master was not found in scene.");
+        }
     }
 
     /// // ADD Extra Gravity

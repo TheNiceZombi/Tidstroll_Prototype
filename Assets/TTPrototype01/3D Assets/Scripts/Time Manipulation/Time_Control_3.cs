@@ -13,17 +13,15 @@ public class Time_Control_3 : MonoBehaviour
 
     bool debugging = true;
 
-    TimeControlled_2[] timeObjects;
+    //TimeControlled_2[] timeObjects;
 
+    TimeControlled_2[] timeObjects;
 
     int rewindSpeedAmount = 1;
     public enum timeWinding
     {
         none,
-        pause,
-        backwards,
-        forwards
-
+        backwards
     }
 
     public timeWinding timeState;
@@ -50,40 +48,23 @@ public class Time_Control_3 : MonoBehaviour
         {
             // NONE ( No time effects )
             case (timeWinding.none):
-                //if (debugging) Debug.Log("TIME CONTROL: Normal time");
 
                 break;
 
             // REWIND
             case (timeWinding.backwards):
-                if (debugging) Debug.Log("TIME CONTROL: Time is now rewinding");
+
 
                 /// TELL: Every Time Object to Rewind
                 for (int objectIndex = 0; objectIndex < timeObjects.Length; objectIndex++)
                 {
                     TimeControlled_2 timeObject = timeObjects[objectIndex];
 
-                    timeObject.GetComponent<TimeControlled_2>().rewindSpeedAmount = rewindSpeedAmount;
+                    timeObject.rewindSpeedAmount = rewindSpeedAmount;
                     timeObject.is_timeManipulated = true;
 
 
                 }
-                break;
-
-            //PAUSE
-            case (timeWinding.pause):
-                if (debugging) Debug.Log("TIME CONTROL: ");
-
-                //
-
-
-                break;
-
-            // FAST-FORWARD
-            case (timeWinding.forwards):
-
-
-
                 break;
         }
 
@@ -101,7 +82,7 @@ public class Time_Control_3 : MonoBehaviour
         if (context.canceled)
         {
             timeState = timeWinding.none;
-            //rewindSpeedAmount = 0;
+            rewindSpeedAmount = 1;
             if (debugging) Debug.Log("REWIND: Cancled");
         }
 
@@ -111,17 +92,26 @@ public class Time_Control_3 : MonoBehaviour
     /// CONTROL Rewind speed
     public void rewindSpeed(InputAction.CallbackContext context)
     {
+        if (context.started)
+        {
+            // IF: We are rewinding Time
+            if (timeState == timeWinding.backwards)
+            {
+                int _previousSpeed = rewindSpeedAmount;
 
-        if (debugging) Debug.Log("REWIND SPEED: ACTIVATE");
+                // Use arrows to set rewind speed
+                int speed = (int)Mathf.Round(context.ReadValue<Vector2>().x);
 
-        int speed = (int)Mathf.Round(context.ReadValue<Vector2>().x);
+                rewindSpeedAmount += speed;
 
-        if (debugging) Debug.Log("Wined speed Change:" + speed);
+                if (_previousSpeed != rewindSpeedAmount)
+                {
+                    Debug.Log("REWIND SPEED: " + rewindSpeedAmount);
+                }
 
-        rewindSpeedAmount += speed;
+            }
 
-        if (debugging) Debug.Log("Speed is now:" + rewindSpeedAmount);
-
+        }
 
     }
 

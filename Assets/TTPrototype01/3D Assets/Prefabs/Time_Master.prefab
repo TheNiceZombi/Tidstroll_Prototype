@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8934089937956705115}
   - component: {fileID: 8934089937956705092}
-  - component: {fileID: 8934089937956705093}
-  - component: {fileID: 8934089937956705094}
   - component: {fileID: 8934089937956705095}
   m_Layer: 0
   m_Name: Time_Master
@@ -94,30 +92,6 @@ MonoBehaviour:
     m_ActionName: NavigateMenu/New action
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8934089937956705093}
-        m_TargetAssemblyTypeName: Time_Control, Assembly-CSharp
-        m_MethodName: rewindTime
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
-      - m_Target: {fileID: 8934089937956705094}
-        m_TargetAssemblyTypeName: Time_Control_2, Assembly-CSharp
-        m_MethodName: rewindTime
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
       - m_Target: {fileID: 8934089937956705095}
         m_TargetAssemblyTypeName: Time_Control_3, Assembly-CSharp
         m_MethodName: rewindTime
@@ -129,7 +103,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_ActionId: 2d58badc-435e-45e3-b72c-11cf454fee02
     m_ActionName: Player/Rewind Time[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
@@ -137,30 +111,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &8934089937956705093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8934089937956705114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e5785f93fc57a449a3e0b27ddcc587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8934089937956705094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8934089937956705114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0760f2648d6f7f946921c572883fc575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8934089937956705095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8aa3881006ddda42a5fb4883f538639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeState: 0

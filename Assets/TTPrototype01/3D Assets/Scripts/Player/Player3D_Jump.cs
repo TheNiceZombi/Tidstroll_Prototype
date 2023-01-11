@@ -48,21 +48,26 @@ public class Player3D_Jump : MonoBehaviour
     // JUMP
     public void Jump(InputAction.CallbackContext context)
     {
-        if (gameObject.GetComponent<Player_Stats>().onGround)
+        /// IF: Time is not Rewinding
+        if (gameObject.GetComponent<Player_Stats>().timeMaster.GetComponent<Time_Control_3>().timeState == Time_Control_3.timeWinding.none)
         {
-            // Start Jumping
-            if (context.started)
+
+            if (gameObject.GetComponent<Player_Stats>().onGround)
             {
-                jumpCountdown = Time.time + jumpTime;
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                // Start Jumping
+                if (context.started)
+                {
+                    jumpCountdown = Time.time + jumpTime;
+                    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
-                gameObject.GetComponent<Player_Stats>().onGround = false;
+                    gameObject.GetComponent<Player_Stats>().onGround = false;
 
-                //jumping = true;
-                //falling = false;
-                Debug.Log("Jumped");
+                    //jumping = true;
+                    //falling = false;
+                    Debug.Log("Jumped");
+                }
+
             }
-
         }
         
     }

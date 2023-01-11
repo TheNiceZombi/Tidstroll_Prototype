@@ -9,26 +9,28 @@ public class PlayerMove3D : MonoBehaviour
     public float moveSpeed;
     private Vector2 move;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //AC.KickStarter.stateHandler.SetMovementSystem(false);
-        // AC.KickStarter.stateHandler.
-
-        //playerInput = gameObject.GetComponent<UnityEngine.InputSystem.PlayerInput>();
-    }
-
     // Update is called once per frame
     void Update()
     {
-        movePlayer();
+        /// IF: Time is not Rewinding
+        if (gameObject.GetComponent<Player_Stats>().timeMaster.GetComponent<Time_Control_3>().timeState == Time_Control_3.timeWinding.none)
+        {
+            movePlayer();
+        }
     }
+    ///
+    
 
+
+
+
+    /// Update Move variable
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
     }
 
+    /// Move Player
     public void movePlayer()
     {
         // Locking Z movement
@@ -44,8 +46,6 @@ public class PlayerMove3D : MonoBehaviour
 
         if (movement != Vector3.zero)
         {
-            //Debug.Log("Movement vector: " + movement);
-
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
 
             transform.Translate(movement * moveSpeed * Time.deltaTime, Space.World);

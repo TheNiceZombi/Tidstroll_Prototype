@@ -24,6 +24,9 @@ public class TimeControlled_2 : MonoBehaviour
 
     // Data variables
     Rigidbody rigidBody;
+
+    Vector3 previousPosition;
+
     public struct RecordedData
     {
         public Vector3 recordedPosisiton;
@@ -36,6 +39,7 @@ public class TimeControlled_2 : MonoBehaviour
 
     // Time Travel Variables
     public int rewindSpeedAmount = 0;
+    
 
     RecordedData[] recordedData;
     int recordMax = 10000;
@@ -43,12 +47,13 @@ public class TimeControlled_2 : MonoBehaviour
     int recordIndex;
     bool wasSteppingBack = false;
 
-
+    List<RecordedData> recordList = new List<RecordedData>();
 
     // Start is called before the first frame update
     void Start()
     {
-        recordedData = new RecordedData[recordMax];
+        //recordedData = new RecordedData[recordMax];
+        //recordList = ;//(new RecordedData[recordMax]);
 
         if (GetComponent<Rigidbody>())
         {
@@ -73,8 +78,6 @@ public class TimeControlled_2 : MonoBehaviour
         /// IF: Time is being manipulated
         if (is_timeManipulated)
         {
-            if (debugging) Debug.Log("STOP Recording");
-
             /// PRIME: Reset 
             was_TimeManipulated = true;
 
@@ -83,77 +86,52 @@ public class TimeControlled_2 : MonoBehaviour
         }
         else
         {
+            if (previousPosition != transform.position)
+            {
+                TimeRecord();
+            }
             /// RESET: So that the newest entry is the current entry
             if (was_TimeManipulated)
             {
-                recordCount = recordIndex;
+                recordCount = recordList.Count-1;
                 rewindSpeedAmount = 0;
                 was_TimeManipulated = false;
 
-            }
-
-            // Get component
-            RecordedData data = new RecordedData();
-
-            /// Update Component
-
-            //  CHECK FOR RIGIDBODY                    
-            if (gameObject.GetComponent<Rigidbody>() ) 
-            {
-                // Record Velocity 
-                data.recordedVelocity = rigidBody.velocity;
-                data.recordedAngularVelocity = rigidBody.angularVelocity;
-
-                // I: Originally "isKinematic", don't turn it off.
-                if (!_isKinematic)
-                {
-                    rigidBody.isKinematic = false;
-                }
+                
 
             }
 
-            // Record position
-            data.recordedPosisiton = transform.position;
-            data.recordedRotation = transform.rotation;
 
-            // SET: Data in array
-            recordedData[recordCount] = data;
-
-            // Increment
-            recordCount++;
-            recordIndex = recordCount;
+            previousPosition = transform.position;
 
         }
-
-
     }
+    ///
 
     /// Travel in Time
     public void TimeUpdate()
     {
-        Debug.Log("TimeUPDATE: ACTIVATED");
         /// IF: Rewind speed isn't zero
         if (rewindSpeedAmount != 0)
         {
             // Step through recording
             recordIndex -= rewindSpeedAmount;
 
+            Debug.Log("RecordIndex: " + recordIndex +" RecordCount: " + recordList.Count);
+
             // CLAMP: RecordIndex so it does not go out of bounds  
-            recordIndex = Mathf.Clamp(recordIndex, 1, recordCount - 1);
+            recordIndex = Mathf.Clamp(recordIndex, 1, recordList.Count - 2);
             if (debugging)
             {
                 Debug.Log("RewindSpeed: " + rewindSpeedAmount);
                 Debug.Log("RecordIndex: " + recordIndex);
             }
         }
-        else
-        {
-            if (debugging) Debug.Log("STOP Winding");
-        }
+
 
 
         /// SET: Position to past position
-        RecordedData data = recordedData[recordIndex];
+        RecordedData data = recordList[recordIndex];
         gameObject.transform.position = data.recordedPosisiton;
         gameObject.transform.rotation = data.recordedRotation;
 
@@ -166,6 +144,11 @@ public class TimeControlled_2 : MonoBehaviour
 
         }
 
+        // REMOVE: recordings
+        //recordList.RemoveAt(recordIndex);//recordList.Count - 1);
+
+        Debug.Log("DataList size: " + recordList.Count);
+
         /// IF: TimeMaster has stopped time travel
         if (timeMaster != null)
         { 
@@ -176,8 +159,47 @@ public class TimeControlled_2 : MonoBehaviour
 
         }
 
+    }
+    ///
+
+    /// Record points in Time
+    void TimeRecord()
+    {
+        // Get component
+        RecordedData data = new RecordedData();
+
+        /// Update Component
+
+        //  CHECK FOR RIGIDBODY                    
+        if (gameObject.GetComponent<Rigidbody>())
+        {
+            // Record Velocity 
+            data.recordedVelocity = rigidBody.velocity;
+            data.recordedAngularVelocity = rigidBody.angularVelocity;
+
+            // I: Originally "isKinematic", don't turn it off.
+            if (!_isKinematic)
+            {
+                rigidBody.isKinematic = false;
+            }
+
+        }
+
+        // Record position
+        data.recordedPosisiton = transform.position;
+        data.recordedRotation = transform.rotation;
+
+        // SET: Data in array
+        recordList.Add( data );  //[recordCount] = data;
+
+        // Increment
+        recordCount++;
+        recordIndex = recordCount;
+
+        if (debugging) Debug.Log("recordCount: "+ recordList.Count);
+
 
     }
-
+    ///
 
 }
