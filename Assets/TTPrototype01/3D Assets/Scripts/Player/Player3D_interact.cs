@@ -16,7 +16,7 @@ public class Player3D_interact : MonoBehaviour
     public void Interact(InputAction.CallbackContext context)
     {
         /// IF: Time is not Rewinding
-        if (gameObject.GetComponent<Player_Stats>().timeMaster.GetComponent<Time_Control_3>().timeState == Time_Control_3.timeWinding.none)
+        if (gameObject.GetComponent<Player_Stats>().timeMaster.GetComponent<Time_Control>().timeState == Time_Control.timeWinding.none)
         {
             if (context.started)
             {

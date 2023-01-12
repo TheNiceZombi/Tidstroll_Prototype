@@ -12,6 +12,7 @@ public class InteractableClass : MonoBehaviour
     [SerializeField] public string interactType;
     //
 
+    
     private void FixedUpdate()
     {
         if(executeScriptBool)
@@ -19,6 +20,7 @@ public class InteractableClass : MonoBehaviour
             ExecuteScript();
         }
     }
+    
 
     public void ExecuteScript()
     {

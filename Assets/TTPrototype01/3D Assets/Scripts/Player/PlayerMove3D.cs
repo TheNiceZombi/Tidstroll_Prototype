@@ -13,7 +13,7 @@ public class PlayerMove3D : MonoBehaviour
     void Update()
     {
         /// IF: Time is not Rewinding
-        if (gameObject.GetComponent<Player_Stats>().timeMaster.GetComponent<Time_Control_3>().timeState == Time_Control_3.timeWinding.none)
+        if (gameObject.GetComponent<Player_Stats>().timeMaster.GetComponent<Time_Control>().timeState == Time_Control.timeWinding.none)
         {
             movePlayer();
         }

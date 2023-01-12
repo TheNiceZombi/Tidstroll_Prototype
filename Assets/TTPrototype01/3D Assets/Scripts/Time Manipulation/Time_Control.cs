@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Time_Control_3 : MonoBehaviour
+public class Time_Control : MonoBehaviour
 {
 
     /*
-        This script rewinds all objects with the "TimeControlled_2" component attached to it.
+        This script rewinds all objects with the "TimeControlled" component attached to it.
     */
 
 
-    bool debugging = true;
+    bool debugging = false;
 
-    //TimeControlled_2[] timeObjects;
+    //TimeControlled[] timeObjects;
 
-    TimeControlled_2[] timeObjects;
+    TimeControlled[] timeObjects;
 
     int rewindSpeedAmount = 1;
     public enum timeWinding
@@ -31,7 +31,7 @@ public class Time_Control_3 : MonoBehaviour
     void Awake()
     {
         // INITIATE TimeObject Array
-        timeObjects = GameObject.FindObjectsOfType<TimeControlled_2>();
+        timeObjects = GameObject.FindObjectsOfType<TimeControlled>();
 
         // Time starts as normal
         timeState = timeWinding.none;
@@ -58,7 +58,7 @@ public class Time_Control_3 : MonoBehaviour
                 /// TELL: Every Time Object to Rewind
                 for (int objectIndex = 0; objectIndex < timeObjects.Length; objectIndex++)
                 {
-                    TimeControlled_2 timeObject = timeObjects[objectIndex];
+                    TimeControlled timeObject = timeObjects[objectIndex];
 
                     timeObject.rewindSpeedAmount = rewindSpeedAmount;
                     timeObject.is_timeManipulated = true;
@@ -106,7 +106,7 @@ public class Time_Control_3 : MonoBehaviour
 
                 if (_previousSpeed != rewindSpeedAmount)
                 {
-                    Debug.Log("REWIND SPEED: " + rewindSpeedAmount);
+                    if (debugging) Debug.Log("REWIND SPEED: " + rewindSpeedAmount);
                 }
 
             }
