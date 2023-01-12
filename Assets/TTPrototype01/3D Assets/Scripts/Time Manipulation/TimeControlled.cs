@@ -52,9 +52,6 @@ public class TimeControlled : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //recordedData = new RecordedData[recordMax];
-        //recordList = ;//(new RecordedData[recordMax]);
-
         if (GetComponent<Rigidbody>())
         {
             rigidBody = GetComponent<Rigidbody>();
@@ -130,13 +127,8 @@ public class TimeControlled : MonoBehaviour
 
         if(debugging)Debug.Log("RecordIndex: " + recordIndex + " recordList.Count: " + recordList.Count);
 
-        // CLAMP: RecordIndex so it does not go out of bounds  
-        recordIndex = Mathf.Clamp(recordIndex, 1, recordList.Count - 2);
-        if (debugging)
-        {
-           // Debug.Log("RewindSpeed: " + rewindSpeedAmount);
-           // Debug.Log("RecordIndex: " + recordIndex);
-        }
+            // CLAMP: RecordIndex so it does not go out of bounds  
+            recordIndex = Mathf.Clamp(recordIndex, 1, recordList.Count - 2);
         }
 
 

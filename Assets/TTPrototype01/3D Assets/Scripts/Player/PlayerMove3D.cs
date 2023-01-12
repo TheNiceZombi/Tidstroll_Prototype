@@ -21,18 +21,21 @@ public class PlayerMove3D : MonoBehaviour
     ///
     
 
-
-
-
     /// Update Move variable
     public void OnMove(InputAction.CallbackContext context)
     {
-        move = context.ReadValue<Vector2>();
+         move = context.ReadValue<Vector2>();
+
     }
+
+    
 
     /// Move Player
     public void movePlayer()
     {
+
+        
+
         // Locking Z movement
         float zLock = 1;
         if (gameObject.GetComponent<Player_Stats>().zMoveLocked)
@@ -44,7 +47,7 @@ public class PlayerMove3D : MonoBehaviour
 
         
 
-        if (movement != Vector3.zero)
+        if(!movement.Equals(Vector3.zero))
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
 
