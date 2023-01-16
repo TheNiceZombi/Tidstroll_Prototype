@@ -1213,6 +1213,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 36.2, y: -30.09, z: 0}
+--- !u!114 &559101222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c0bf4f1f8a744469ac79bba16d7b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is2D: 0
 --- !u!1 &562019787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,7 +1238,6 @@ GameObject:
   - component: {fileID: 562019791}
   - component: {fileID: 562019790}
   - component: {fileID: 562019789}
-  - component: {fileID: 562019792}
   m_Layer: 0
   m_Name: PlayerFace
   m_TagString: Untagged
@@ -1311,18 +1323,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562019787}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &562019792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562019787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7195020507b3114d973cf300dd8d3d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &573859276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,8 +2761,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b4062f7d1f9254490cd51fc9751cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 0}
-  objectDestination: {x: 0, y: 0, z: 0}
+  _object: {fileID: 1974041505}
+  objectDestination: {x: 0, y: -2, z: 0}
 --- !u!1 &1455839900
 GameObject:
   m_ObjectHideFlags: 0
@@ -5014,7 +5014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb715911deec524a830628076fcb1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  executeScriptBool: 1
+  executeScriptBool: 0
   interactType: Inventory Item
 --- !u!114 &28402446107892315
 MonoBehaviour:
@@ -5421,7 +5421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9657d6d6e7aaf4f7c8ecc4ee18d3e9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navigationEngine: {fileID: 0}
+  navigationEngine: {fileID: 559101222}
 --- !u!114 &3410500357381583865
 MonoBehaviour:
   m_ObjectHideFlags: 0
