@@ -150,7 +150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2905278014968477807, guid: d86c5fc180cd97749985c99a35d82fd4, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2905278014968477807, guid: d86c5fc180cd97749985c99a35d82fd4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea1bd3614edc96448eafc8bf0b7d91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1438352082
+--- !u!1001 &1451442983
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -660,7 +660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934089937956705115, guid: 2674fca206f2c9140ba508efdf926e1c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8934089937956705115, guid: 2674fca206f2c9140ba508efdf926e1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -713,7 +713,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6623195429644655232, guid: cd94222c4cb30ae41a435e733a77d623, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6623195429644655232, guid: cd94222c4cb30ae41a435e733a77d623, type: 3}
       propertyPath: m_LocalPosition.x

@@ -103,7 +103,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
     m_ActionId: 2d58badc-435e-45e3-b72c-11cf454fee02
     m_ActionName: Player/Rewind Time[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
