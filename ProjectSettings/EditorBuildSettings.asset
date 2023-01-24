@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/TTPrototype01/Assets/Scenes/SampleScene_2.unity
     guid: 38d9670d1f35e8b4f8e008e3a69925dc
   - enabled: 1
-    path: Assets/TTPrototype01/3D Assets/Scenes/RandomEncounter_Car.unity
+    path: Assets/TTPrototype01/Assets/Scenes/RandomEncounter_Car.unity
     guid: f34466d5faff411488224cadb65933f9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9a090a7faf16f4647b94eb30256db6ce, type: 2}
