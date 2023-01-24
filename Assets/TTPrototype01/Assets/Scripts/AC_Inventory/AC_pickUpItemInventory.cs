@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class pickUpItemInventory : MonoBehaviour
+public class AC_pickUpItemInventory : MonoBehaviour
 {
     [SerializeField] public int itemNumber;
 

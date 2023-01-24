@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorBehaviour : MonoBehaviour
+public class AC_DoorBehaviour : MonoBehaviour
 {
     public bool isLocked = true;
     public Vector3 hotspotSize;

@@ -239,7 +239,6 @@ GameObject:
   - component: {fileID: 2064724680416640667}
   - component: {fileID: 2064724680416640674}
   - component: {fileID: 2064724680416640664}
-  - component: {fileID: 2064724680416640657}
   - component: {fileID: 2064724680416640670}
   - component: {fileID: 2064724680416640666}
   - component: {fileID: 2064724680416640660}
@@ -386,7 +385,7 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2064724680416640657}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Inventory_OpenClose, Assembly-CSharp
         m_MethodName: OpenClose_Inventory
         m_Mode: 0
@@ -474,19 +473,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2064724680416640657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064724680416640675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71975a81906fbf944a3505e42811f42f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionList: {fileID: 0}
 --- !u!114 &2064724680416640670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodes:
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 2.9, z: 0}
   nodeCommands:
   - cutscene: {fileID: 0}
     actionListAsset: {fileID: 0}

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Inventory_OpenClose : MonoBehaviour
+public class AC_Inventory_OpenClose : MonoBehaviour
 {
 
     [SerializeField] public ActionList actionList;

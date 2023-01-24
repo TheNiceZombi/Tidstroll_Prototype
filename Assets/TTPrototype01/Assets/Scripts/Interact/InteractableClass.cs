@@ -29,21 +29,21 @@ public class InteractableClass : MonoBehaviour
             case ("Inventory Item"):
 
                 Debug.Log("Picking Up Inventory Item");
-                GetComponent<pickUpItemInventory>().AddItem();
+                GetComponent<AC_pickUpItemInventory>().AddItem();
 
                 break;
 
             case ("Unlock Door"):
 
                 Debug.Log("Try Opening door");
-                GetComponent<DoorBehaviour>().UnlockDoor();
+                GetComponent<AC_DoorBehaviour>().UnlockDoor();
 
                 break;
 
             case ("Open Door"):
 
                 Debug.Log("Try Opening door");
-                GetComponent<DoorBehaviour>().GoThroughDoor();
+                GetComponent<AC_DoorBehaviour>().GoThroughDoor();
 
                 break;
         }
